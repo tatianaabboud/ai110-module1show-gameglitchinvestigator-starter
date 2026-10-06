@@ -16,9 +16,10 @@ Document at least 3 bugs you found. Add rows as needed.
 
 | Input | Expected Behavior | Actual Behavior | Console Output / Error |
 |-------|-------------------|-----------------|------------------------|
-| guess of 50 | "too low" | "go lower" | none |
-| guess of -10 | "out of range" | "go lower" | none |
-| player clicks new game and submits a guess| "too low" | "none" | "none"|
+| guess of 50 | "too low" | "go lower" | none | bug is in check_guess()
+| guess of -10 | "out of range" | "go lower" | none | bug is in the submit handler in app.py
+| player clicks new game and submits a guess| "too low" | "none" | "none"| status reamins "won" in app.py
+| player makes their first guess | guesses remaining decrements | guesses remaining stays the same | "none"
 
 ---
 
@@ -38,7 +39,7 @@ I used claude code and asked it to explain check_guess(). It caught the error th
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
 
-AI helped me implement enough tests to verify that the high/low bug was fixed. I decided that the bug was truly fixed after running these tests and running the game. 
+AI helped me implement enough tests to verify that the high/low bug was fixed. I decided that the bug was truly fixed after running these tests and the output said that all the tests passed. I also ran the game, and it behaved as I expected. 
 ---
 
 ## 4. What did you learn about Streamlit and state?
