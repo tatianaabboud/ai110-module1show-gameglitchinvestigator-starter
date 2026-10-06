@@ -33,11 +33,12 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Player enters a guess of 65
+2. Game returns "Go LOWER"
+3. Player enters a guess of 30, Game returns "Go HIGHER"
+4. The player's score is updated after each guess
+5. The game ends when the player guesses the right number
+or when the player has no more guesses. 
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
@@ -48,6 +49,15 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 # pytest tests/
 # ========================= X passed in 0.XXs =========================
 ```
+
+tests/test_game_logic.py::test_winning_guess PASSED                                                                                   [ 16%]
+tests/test_game_logic.py::test_guess_too_high PASSED                                                                                  [ 33%]
+tests/test_game_logic.py::test_guess_too_low PASSED                                                                                   [ 50%]
+tests/test_game_logic.py::test_too_high_guess_tells_player_to_go_lower PASSED                                                         [ 66%]
+tests/test_game_logic.py::test_too_low_guess_tells_player_to_go_higher PASSED                                                         [ 83%]
+tests/test_game_logic.py::test_hint_direction_with_string_secret PASSED                                                               [100%]
+
+============================================================ 6 passed in 0.08s =============================================================
 
 ## 🚀 Stretch Features
 
