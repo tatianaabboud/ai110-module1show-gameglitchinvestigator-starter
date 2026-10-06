@@ -14,3 +14,30 @@ def test_guess_too_low():
     # If secret is 50 and guess is 40, hint should be "Too Low"
     result = check_guess(40, 50)
     assert result == "Too Low"
+
+
+def test_too_high_guess_tells_player_to_go_lower():
+    # Regression: the hint used to say "Go HIGHER!" for a guess above the secret
+    outcome, message = check_guess(60, 50)
+    assert outcome == "Too High"
+    assert "LOWER" in message
+    assert "HIGHER" not in message
+
+
+def test_too_low_guess_tells_player_to_go_higher():
+    # Regression: the hint used to say "Go LOWER!" for a guess below the secret
+    outcome, message = check_guess(40, 50)
+    assert outcome == "Too Low"
+    assert "HIGHER" in message
+    assert "LOWER" not in message
+
+
+def test_hint_direction_with_string_secret():
+    # app.py passes the secret as a str on some turns; hints must still point the right way
+    outcome, message = check_guess(60, "50")
+    assert outcome == "Too High"
+    assert "LOWER" in message
+
+    outcome, message = check_guess(40, "50")
+    assert outcome == "Too Low"
+    assert "HIGHER" in message
